@@ -46,17 +46,38 @@ Most AI tools treat your documents as a temporary search index. Nana treats your
 
 ## Installation
 
-**Requirements:** Python 3.12+, [uv](https://github.com/astral-sh/uv) (recommended), an Obsidian vault.
+**Requirements:** Python 3.12+, an Obsidian vault, an [OpenRouter](https://openrouter.ai) API key.
+
+### Recommended — `pipx` (no Python prefix ever needed)
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/nana.git
-cd nana
-
-# Create a virtual environment and install dependencies
-uv venv && source .venv/bin/activate
-uv pip install -e .
+pipx install nana-wiki
+nana
 ```
+
+### One-line installer
+
+```bash
+curl -sSL https://raw.githubusercontent.com/mlemiec/nana/main/install.sh | bash
+```
+
+### Via pip
+
+```bash
+pip install nana-wiki
+nana
+```
+
+### From source (dev)
+
+```bash
+git clone https://github.com/mlemiec/nana.git
+cd nana
+pip install -e .
+nana
+```
+
+> **What is pipx?** It installs Python CLI tools into isolated environments and exposes them globally — like `npm install -g` but for Python. Install it with `brew install pipx` or `pip install pipx`.
 
 ---
 
