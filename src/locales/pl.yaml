@@ -1,0 +1,86 @@
+ui:
+  welcome_title: "NANA CLI"
+  welcome_subtitle: "Twój Osobisty Asystent Wiedzy"
+  motto: |
+    Witaj, kochanie! Jestem [bold #d946ef]NANA[/bold #d946ef] ([bold #d946ef]NA[/bold #d946ef]na [bold #d946ef]N[/bold #d946ef]ie [bold #d946ef]A[/bold #d946ef]I).
+
+    Pomyśl o mnie jak o swojej cyfrowej [italic cyan]Babci[/italic cyan]. Jestem tutaj, żeby pomóc Ci się uczyć, [bold green]poprawiać notatki[/bold green] i [bold green]sprzątać bałagan[/bold green], kiedy się pojawi.
+
+    Obiadu jeszcze nie gotuję, ale sprawdź za jakiś czas!
+    [italic yellow]I tak – podzielę się przepisami, jeśli ładnie poprosisz! 👵✨[/italic yellow]
+  prompt: "Jak Nana może Ci dziś pomóc?"
+  status: "Online"
+  goodbye: "Do widzenia!"
+  unknown_command: "Przepraszam, nie rozumiem tego polecenia: {command}"
+  command_parse_error: "Błąd parsowania polecenia: {error}"
+
+help:
+  title: "Dostępne polecenia"
+  clean: "Zmienia nazwy niechlujnych plików (np. Untitled.md) w vaulcie lub podanej ścieżce"
+  extract: "Konwertuje wycinki z /raw na ustrukturyzowane strony wiki"
+  finish: "Uzupełnia notatki z tagiem #incomplete (lub wskazany plik/folder)"
+  tag: "Dodaje tag do wszystkich plików markdown w ścieżce, które go jeszcze nie mają"
+  recipe: "Poproś Nanę o sekretny przepis 🍲"
+  call_model: "Wyślij prompt bezpośrednio do modelu AI"
+  settings: "Zmień ścieżkę do vaultu, klucz API lub wybierz darmowy model"
+  help: "Pokaż tę wiadomość pomocy"
+  exit: "Wyjdź z powłoki Nany"
+
+utils:
+  path: "Aktualna ścieżka:"
+  where_is_obsidian_vault: "Gdzie znajduje się Twój Obsidian Vault?"
+  pick_folder: "[Wybierz ten folder]"
+  up: "W górę"
+  where_you_wanna_move: "Gdzie chcesz się przenieść?"
+  confirm: "Potwierdź"
+
+errors:
+  no_folder_selected: "Nie wybrano folderu"
+  no_access_to_folder: "Brak dostępu do tego folderu"
+  path_not_found: "Ścieżka '{path}' nie istnieje."
+  raw_folder_not_found: "Nie znaleziono folderu 'raw/' w Twoim vaulcie. Utwórz go najpierw."
+
+setup_wizard:
+  language_selection: "Wybierz język"
+
+checks:
+  obsidian_vault_found: "\n\n[✓] Projekt zaindeksowany"
+  connected_to_gemini: "\n[✓] Połączono z Gemini"
+  connected_to_openai: "\n[✓] Połączono z OpenAI API"
+  connected_to_claude: "\n[✓] Połączono z Claude"
+  connected_to_local_model: "\n[✓] Połączono z lokalnym modelem"
+
+actions:
+  # Sprzątanie
+  cleaning_start: "[yellow]Rozglądam się po pokoju w poszukiwaniu bałaganu...[/yellow]"
+  cleaning_rename: "O rany, '[bold white]{old_name}[/bold white]' to okropna nazwa. Zmieniłam ją na '[bold green]{new_name}[/bold green]'."
+  cleaning_done: "No proszę! Wszystko ładnie i porządnie. ✨"
+  cleaning_dry_run: "PRÓBNY PRZEBIEG: Żadne pliki nie zostały faktycznie przeniesione."
+  no_mess: "Wszystko wygląda nieskazitelnie! Dobra robota, kochanie."
+
+  # Ekstraktor (Bibliotekarz)
+  extract_start: "Bibliotekarz skanuje nowe wycinki..."
+  extract_no_files: "Nie znaleziono żadnych wycinków do przetworzenia."
+  extract_wiki_created: "Utworzono stronę wiki: {filename}"
+  extract_done: "Ekstrakcja zakończona!"
+
+  # Pisarz (Współautor)
+  finish_start: "Nana szuka niedokończonych notatek..."
+  finish_no_incomplete: "Nie znaleziono notatek z tagiem #incomplete. Dobra robota!"
+  finish_helping: "Pomagam dokończyć {filename}..."
+  finish_done_file: "Ukończono {filename}"
+  finish_done_all: "Wszystkie niedokończone notatki zostały przetworzone!"
+
+  # Tagger
+  tag_start: "Skanuję {path} w celu dodania tagu {tag}..."
+  tag_no_files: "Nie znaleziono żadnych plików markdown do otagowania."
+  tag_added: "Dodano {tag} do {filename}"
+  tag_done: "Gotowe! Dodano {tag} do {count} plików."
+
+  # Przepis
+  recipe_start: "Nana przegląda swoje stare książki kucharskie..."
+  recipe_enjoy: "Smacznego, kochanie! ✨👵"
+
+model:
+  empty_response: "Oj, mój umysł się wyłączył! Model nic nie odesłał. Spróbuj ponownie za chwilę, kochanie. 👵"
+  empty_content: "Hmm, zaczęłam myśl, ale gdzieś ją zgubiłam... Model zwrócił pustą odpowiedź. Może spróbuj innego pytania? 🤔"
