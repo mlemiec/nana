@@ -1,6 +1,6 @@
 <div align="center">
 
-![Nana UI](src/assets/nana-256.png)
+![Nana UI](nana/assets/nana-256.png)
 # NANA - NAna Not AI 
 
 **NANA is your assitant for writing better notes and managing your vault.**
