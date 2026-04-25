@@ -3,15 +3,19 @@ from pathlib import Path
 from openai import OpenAI
 from nana.utils import load_config, NANA_CONFIG_DIR
 
-config = load_config()
-client = OpenAI(
-    base_url="https://openrouter.ai/api/v1",
-    api_key=config.get("api_key"),
-)
+
+def _get_client():
+    """Lazy-initialize the OpenAI client so importing this module never crashes."""
+    config = load_config()
+    return OpenAI(
+        base_url="https://openrouter.ai/api/v1",
+        api_key=config.get("api_key") or "placeholder",
+    ), config
 
 
 def get_agent_md_content():
     """Reads AGENT.md from the vault directory if it exists."""
+    _, config = _get_client()
     vault_path = config.get("vault_path")
     if vault_path:
         agent_md = Path(vault_path) / "AGENT.md"
@@ -30,6 +34,7 @@ def send_request_to_model(system_prompt=None, user_prompt=None, messages=None):
     You can either provide a system_prompt and user_prompt for a simple query,
     or provide a list of messages for a multi-turn conversation.
     """
+    client, config = _get_client()
     agent_rules = get_agent_md_content()
 
     if messages is None:

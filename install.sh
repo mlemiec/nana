@@ -6,41 +6,44 @@ set -e
 
 GREEN='\033[0;32m'
 PURPLE='\033[0;35m'
-NC='\033[0m' # No Color
+YELLOW='\033[1;33m'
+NC='\033[0m'
 
 echo ""
 echo -e "${PURPLE}👵 Installing Nana — NAna Not AI...${NC}"
 echo ""
 
-# Check if pipx is available
-if command -v pipx &>/dev/null; then
-    echo "✅ Found pipx — using it for a clean, isolated install."
-    pipx install nana-wiki
-    echo ""
-    echo -e "${GREEN}✅ Done! Run 'nana' to get started.${NC}"
-    exit 0
+# Ensure pipx is available — install it if not
+if ! command -v pipx &>/dev/null; then
+    echo -e "${YELLOW}⚙️  pipx not found. Installing pipx first...${NC}"
+
+    if command -v brew &>/dev/null; then
+        brew install pipx
+    elif command -v pip3 &>/dev/null; then
+        pip3 install --user pipx
+    elif command -v pip &>/dev/null; then
+        pip install --user pipx
+    else
+        echo "❌ Could not find pip or brew to install pipx."
+        echo "   Please install Python 3.12+ from https://python.org and try again."
+        exit 1
+    fi
+
+    # Add pipx to PATH for this session
+    export PATH="$HOME/.local/bin:$PATH"
+
+    # Ensure pipx is on PATH permanently
+    python3 -m pipx ensurepath 2>/dev/null || pipx ensurepath 2>/dev/null || true
 fi
 
-# Fallback: check if pip is available
-if command -v pip3 &>/dev/null; then
-    echo "⚠️  pipx not found. Installing via pip3..."
-    echo "   (Tip: 'pipx install nana-wiki' is the recommended way)"
-    pip3 install nana-wiki
-    echo ""
-    echo -e "${GREEN}✅ Done! Run 'nana' to get started.${NC}"
-    exit 0
-fi
+echo "✅ Using pipx for a clean, isolated install."
+pipx install nana-wiki --force
 
-if command -v pip &>/dev/null; then
-    echo "⚠️  pipx not found. Installing via pip..."
-    pip install nana-wiki
-    echo ""
-    echo -e "${GREEN}✅ Done! Run 'nana' to get started.${NC}"
-    exit 0
-fi
-
-echo "❌ Could not find pip or pipx."
 echo ""
-echo "Please install Python 3.12+ and then run:"
-echo "  pip install pipx && pipx install nana-wiki"
-exit 1
+echo -e "${GREEN}✅ Done! Nana is installed.${NC}"
+echo ""
+echo "  Run: nana"
+echo ""
+echo -e "${YELLOW}⚠️  If 'nana' is not found, restart your terminal or run:${NC}"
+echo "     pipx ensurepath && source ~/.zshrc"
+echo ""
