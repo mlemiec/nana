@@ -1,4 +1,4 @@
 """Nana — NAna Not AI. Your sovereign knowledge assistant for Obsidian."""
 
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 __app_name__ = "nana"
