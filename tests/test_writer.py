@@ -1,8 +1,8 @@
-"""Unit tests for src/actions/writer.py"""
+"""Unit tests for nana.actions.writer"""
 import pytest
 from pathlib import Path
 from unittest.mock import patch
-from actions.writer import finish_notes
+from nana.actions.writer import finish_notes
 
 
 @pytest.fixture
@@ -18,59 +18,43 @@ LOCALE = {}
 
 
 def test_finishes_incomplete_notes(tmp_vault):
-    """Should append content to notes tagged #incomplete."""
-    with patch("actions.writer.send_request_to_model", return_value="## Conclusion\nMore detail here."):
+    with patch("nana.actions.writer.send_request_to_model", return_value="## Conclusion\nMore detail here."):
         finish_notes(tmp_vault, {}, LOCALE)
-
     content = (tmp_vault / "wiki" / "incomplete-note.md").read_text()
     assert "## Conclusion" in content
     assert "More detail here." in content
 
 
 def test_removes_incomplete_tag(tmp_vault):
-    """The #incomplete tag should be removed after finishing."""
-    with patch("actions.writer.send_request_to_model", return_value="## Conclusion\nDone."):
+    with patch("nana.actions.writer.send_request_to_model", return_value="## Conclusion\nDone."):
         finish_notes(tmp_vault, {}, LOCALE)
-
     content = (tmp_vault / "wiki" / "incomplete-note.md").read_text()
     assert "#incomplete" not in content
 
 
 def test_skips_complete_notes(tmp_vault):
-    """Should not touch notes without the #incomplete tag."""
-    with patch("actions.writer.send_request_to_model", return_value="## Conclusion\nDone.") as mock_model:
+    with patch("nana.actions.writer.send_request_to_model", return_value="## Conclusion\nDone.") as mock_model:
         finish_notes(tmp_vault, {}, LOCALE)
-
-    # Model should only be called once (for the incomplete note)
     assert mock_model.call_count == 1
 
 
 def test_finish_specific_file_without_tag(tmp_vault):
-    """When a specific file path is given, finish it even without the tag."""
     target = tmp_vault / "wiki" / "complete-note.md"
-    with patch("actions.writer.send_request_to_model", return_value="## Conclusion\nAdded.") as mock_model:
+    with patch("nana.actions.writer.send_request_to_model", return_value="## Conclusion\nAdded.") as mock_model:
         finish_notes(tmp_vault, {}, LOCALE, target_path=target)
-
     mock_model.assert_called_once()
-    content = target.read_text()
-    assert "## Conclusion" in content
+    assert "## Conclusion" in target.read_text()
 
 
 def test_finish_specific_directory(tmp_vault):
-    """When a directory is given, scan recursively for #incomplete."""
     wiki = tmp_vault / "wiki"
-    with patch("actions.writer.send_request_to_model", return_value="## Conclusion\nDone."):
+    with patch("nana.actions.writer.send_request_to_model", return_value="## Conclusion\nDone."):
         finish_notes(tmp_vault, {}, LOCALE, target_path=wiki)
-
-    content = (wiki / "incomplete-note.md").read_text()
-    assert "## Conclusion" in content
+    assert "## Conclusion" in (wiki / "incomplete-note.md").read_text()
 
 
 def test_passes_filename_to_model(tmp_vault):
-    """Model should receive the filename so it knows the real topic."""
-    with patch("actions.writer.send_request_to_model", return_value="Done.") as mock_model:
+    with patch("nana.actions.writer.send_request_to_model", return_value="Done.") as mock_model:
         finish_notes(tmp_vault, {}, LOCALE)
-
-    call_kwargs = mock_model.call_args
-    user_prompt = call_kwargs.kwargs.get("user_prompt", "")
+    user_prompt = mock_model.call_args.kwargs.get("user_prompt", "")
     assert "incomplete-note" in user_prompt
