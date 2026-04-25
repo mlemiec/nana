@@ -1,6 +1,6 @@
 [project]
 name = "nana-wiki"
-version = "0.0.1"
+version = "0.0.2"
 description = "Your sovereign, multilingual AI knowledge assistant for Obsidian"
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -45,6 +45,10 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["nana"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"nana/locales" = "nana/locales"
+"nana/assets" = "nana/assets"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
