@@ -61,13 +61,6 @@ nana
 curl -sSL https://raw.githubusercontent.com/mlemiec/nana/main/install.sh | bash
 ```
 
-### Via pip
-
-```bash
-pip install nana-wiki
-nana
-```
-
 ### From source (dev)
 
 ```bash
