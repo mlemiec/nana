@@ -3,7 +3,7 @@ name = "nana-wiki"
 version = "0.0.1"
 description = "Your sovereign, multilingual AI knowledge assistant for Obsidian"
 readme = "README.md"
-license = { text = "MIT" }
+license = { file = "LICENSE" }
 authors = [{ name = "Nana Project" }]
 requires-python = ">=3.12"
 keywords = ["obsidian", "knowledge-base", "ai", "wiki", "cli", "llm"]
@@ -29,7 +29,12 @@ dependencies = [
 ]
 
 [project.scripts]
-nana = "nana.cli:app"
+nana = "cli:app"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
 
 [build-system]
 requires = ["hatchling"]
