@@ -1,6 +1,6 @@
 <div align="center">
 
-![Nana UI](nana/assets/nana-256.png)
+![Nana UI](https://raw.githubusercontent.com/mlemiec/nana/main/nana/assets/nana-256.png)
 # NANA - NAna Not AI 
 
 **NANA is your assitant for writing better notes and managing your vault.**
@@ -223,6 +223,6 @@ Want to teach Nana a new language or a new skill? PRs are welcome!
 
 Made with 💜 and a lot of tea.
 
-**v0.0.1** — *She's just getting started.*
+**v0.0.7** — *She's just getting started.*
 
 </div>
