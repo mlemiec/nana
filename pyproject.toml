@@ -47,4 +47,10 @@ build-backend = "setuptools.build_meta"
 testpaths = ["tests"]
 
 [tool.setuptools]
-exclude-package-data = {"*" = [".DS_Store", "**/.DS_Store"]}
+packages = ["nana"]
+
+[tool.setuptools.package-data]
+nana = [
+    "locales/**/*.yaml",
+    "assets/**/*",
+]
