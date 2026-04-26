@@ -46,9 +46,5 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 packages = ["nana"]
 
-[tool.hatch.build.targets.wheel.force-include]
-"nana/locales" = "nana/locales"
-"nana/assets" = "nana/assets"
-
 [tool.pytest.ini_options]
 testpaths = ["tests"]
