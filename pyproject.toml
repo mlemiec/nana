@@ -1,6 +1,6 @@
 [project]
 name = "nana-wiki"
-version = "0.0.5"
+version = "0.0.6"
 description = "Your sovereign, multilingual AI knowledge assistant for Obsidian"
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -36,6 +36,12 @@ dev = [
     "twine>=5.0",
 ]
 
+
+[project.urls]
+Homepage = "https://github.com/mlemiec/nana"
+Repository = "https://github.com/mlemiec/nana"
+Issues = "https://github.com/mlemiec/nana/issues"
+
 [project.scripts]
 nana = "nana.cli:app"
 
@@ -45,12 +51,3 @@ build-backend = "setuptools.build_meta"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-
-[tool.setuptools]
-packages = ["nana"]
-
-[tool.setuptools.package-data]
-nana = [
-    "locales/**/*.yaml",
-    "assets/**/*",
-]
