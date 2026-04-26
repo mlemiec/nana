@@ -1,4 +1,4 @@
-# Release v0.0.4 — Initial Global Release
+# Release v0.0.5 — Initial Global Release
 
 Nana is now a fully-fledged CLI tool that can be installed globally and used in any Obsidian vault.
 

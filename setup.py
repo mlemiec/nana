@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='nana-wiki',
-    version='0.0.4',
+    version='0.0.5',
     packages=find_packages(include=['nana', 'nana.*']),
     install_requires=[
         'openai>=1.0.0',
