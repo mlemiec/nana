@@ -5,7 +5,7 @@
 
 **NANA is your assitant for writing better notes and managing your vault.**
 
-[![Version](https://img.shields.io/badge/version-0.0.1-blueviolet?style=flat-square)](https://github.com/yourusername/nana)
+[![Version](https://img.shields.io/badge/version-0.0.7-blueviolet?style=flat-square)](https://github.com/yourusername/nana)
 [![Python](https://img.shields.io/badge/python-3.12%2B-blue?style=flat-square)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
 [![Tests](https://img.shields.io/badge/tests-17%20passing-brightgreen?style=flat-square)](#testing)
